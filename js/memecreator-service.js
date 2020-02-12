@@ -1,18 +1,30 @@
 'use strict'
 
-var gMeme = _createMeme()
+var gMeme = createMeme();
+console.log(gMeme);
 
-function _createMeme(id, txt, size, side, color) {
+function createMeme() {
     var meme = {
-        selectedImgId: id,
+        selectedImgId: 5,
         selectedLineIdx: 0,
-        lines: {
-            txt: txt,
-            size: size,
-            align: side,
-            color: color
-        }
-    };
-
+        lines: { txt: '', size: 60, align: 'left', color: 'blue' }
+    }
     return meme;
+}
+
+function getMemeLines() {
+    var lines = gMeme.lines;
+    return lines;
+}
+
+function setSize(diff) {
+    return gMeme.lines.size += diff;
+}
+
+function setColor() {
+    return gMeme.lines.color = getColor();
+}
+
+function getText(value) {
+    return gMeme.lines.txt = value;
 }

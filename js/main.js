@@ -2,10 +2,6 @@ var gMeme;
 var gKeywords = { 'happy': 12, 'funny puk': 1 }
 var gID = 0;
 
-function renderImages() {
-
-}
-
 function onInit() {
     renderImages();
     // doTrans();

@@ -27,13 +27,16 @@
                 <canvas id="my-canvas" height="450" width="450" style="border: 1px solid black;"></canvas>
             </div>
             <div class="edit-container">
-                <input type="text" value="" placeholder="Please enter your first line here " oninput="drawText(value)">
-                <button onclick="clearFirstLine() ">🗑️</button>
+                <input type="text" value="" placeholder="Please enter your first line here " oninput="renderText(value)">
+                <input type="color" name="" id="color-font">
+                <button class="minus" onclick="onGetFontSize(-3)"><img src="images/minus.png"></button><button onclick="onGetFontSize(3)"><img src="images/plus.png"></button>
+                <button onclick="onClearLine()"><img src="images/trash.png" alt=""></button>
             </div>
         </container>
     </main>
     </main>
 
+    <div class="test"></div>
 
 
     <div class=" main-containter ">
@@ -46,8 +49,9 @@
         <script src="js/util.js "></script>
         <script src="js/memegallery-service.js "></script>
         <script src="js/memecreator-service.js "></script>
-        <script src="js/main.js "></script>
         <script src="js/main-memecreator.js "></script>
+        <script src="js/main.js "></script>
+
 
 </body>
 
