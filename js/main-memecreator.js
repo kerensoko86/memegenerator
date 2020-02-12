@@ -1,7 +1,5 @@
 var gCanvas;
 var gCtx;
-var gX = 100;
-var gY = 100;
 
 
 function onInitMeme(id) {
@@ -18,10 +16,15 @@ function resizeCanvas() {
     gCanvas.height = elContainer.offsetHeight;
 }
 
-function getColor() {
+function getColorFill() {
+    var elColor = document.getElementById('color-fill');
+    var colorValue = elColor.value;
+    return colorValue;
+}
+
+function getColorStroke() {
     var elColor = document.getElementById('color-font');
     var colorValue = elColor.value;
-
     return colorValue;
 }
 
@@ -31,26 +34,80 @@ function downloadCanvas(elLink) {
     elLink.download = 'my-meme.jpg'
 }
 
-function drawImg(id) {
+function onChangeAlign(value) {
+    updateLocation(value);
+    drawImg();
+}
+
+function onMoveLine(value) {
+    var meme = getMeme();
+    var lines = getMemeLines(meme.selectedLineIdx);
+    if (value === 'up') lines.location.y--;
+    if (value === 'down') lines.location.y++;
+}
+
+function drawImg() {
     var img = new Image()
-    img.src = `images/${id}.jpg`;
+    var meme = getMeme();
+    img.src = `images/${meme.selectedImgId}.jpg`;
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
+        renderText();
     }
 }
 
-function renderText(value) {
-    var lines = getMemeLines();
-    gCtx.font = `${lines.size}px Impact`;
-    gCtx.fillText(getText(value), gX, gY);
-    gCtx.fillStyle = setColor();
-    gCtx.strokeText(getText(value), gX, gY)
+function onAddLine() {
+    var newLine = document.querySelector('.line2').style.display = 'block';
+    return newLine;
 }
+
+
+function onSetText(value) {
+    setText(value);
+    renderText();
+}
+
+function onChangeFont(value) {
+    setFont(value);
+    renderText();
+}
+
+function chooseLine(el) {
+    var id = document.querySelector('#id')
+    return id;
+}
+
+function lineNum(el) {
+    var id = el;
+    setSelectedLine(id);
+    return id;
+}
+
+function onChange() {}
+
+function renderText() {
+    var meme = getMeme();
+    var lines = getMemeLines(meme.selectedLineIdx);
+    gCtx.font = `${lines.size}px ${lines.font}`;
+    gCtx.fillText(lines.txt, lines.location.x, lines.location.y);
+    gCtx.fillStyle = getColorFill();
+    gCtx.strokeStyle = getColorStroke();
+    gCtx.textAlign = lines.align;
+    gCtx.strokeText(lines.txt, lines.location.x, lines.location.y);
+    drawImg();
+}
+
 
 function onGetFontSize(diff) {
     setSize(diff);
+    renderText();
+    drawImg();
 }
 
-function onClearLine() {
-    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
-}
+document.getElementById('swap_button').onclick = function() {
+    var tmp = document.getElementById('0').value;
+    document.getElementById('0').value = document.getElementById('1').value;
+    setText(document.getElementById('0').value);
+    document.getElementById('1').value = tmp;
+    renderText()
+};

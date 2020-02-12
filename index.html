@@ -27,20 +27,47 @@
                 <canvas id="my-canvas" height="450" width="450" style="border: 1px solid black;"></canvas>
             </div>
             <div class="edit-container">
-                <input type="text" value="" placeholder="Please enter your first line here " oninput="renderText(value)">
-                <input type="color" name="" id="color-font">
-                <button class="minus" onclick="onGetFontSize(-3)"><img src="images/minus.png"></button><button onclick="onGetFontSize(3)"><img src="images/plus.png"></button>
-                <button onclick="onClearLine()"><img src="images/trash.png" alt=""></button>
+                <input type="text" value="" placeholder="Please enter your first line here" id="0" onclick="lineNum(this.id)" oninput="onSetText(value)">
+                <input type="text" class="line2" value="" placeholder="Please enter your first line here" id="1" onclick="lineNum(this.id)" oninput="onSetText(value)">
+
+                <input type="color" name="color" id="color-fill">
+                <input type="color" name="color" id="color-font">
+                <button class="minus " onclick="onGetFontSize(-3) "><img src="images/minus.png "></button><button onclick="onGetFontSize(3) "><img src="images/plus.png "></button>
+                <button onclick="onClearLine() "><img src="images/trash.png " alt=" "></button>
+                <select id="select_font " onchange="onChangeFont(this.value); ">
+                    <option value="Arial ">Arial</option>
+                    <option value="Sans Serif " selected>Sans Serif</option>
+                    <option value="Comic Sans MS ">Comic Sans MS</option>
+                    <option value="Times New Roman ">Times New Roman</option>
+                    <option value="Courier New ">Courier New</option>
+                    <option value="Verdana ">Verdana</option>
+                    <option value="Trebuchet MS ">Trebuchet MS</option>
+                    <option value="Arial Black ">Arial Black</option>
+                    <option value="Impact ">Impact</option>
+                    <option value="Bookman ">Bookman</option>
+                    <option value="Garamond ">Garamond</option>
+                    <option value="Palatino ">Palatino</option>
+                    <option value="Georgia ">Georgia</option>
+                </select>
+                <button value="right" onclick="onChangeAlign(this.value) "><img src="images/left.png "></button>
+                <button value="center" onclick="onChangeAlign(this.value) "><img src="images/center.png "></button>
+                <button value="left" onclick="onChangeAlign(this.value) "><img src="images/right.png "></button>
+                <button value="up" onclick="onMoveLine(this.value) ">⬆️</button>
+                <button value="down" onclick="onMoveLine(this.value) ">⬇️</button>
+                <button onclick="onAddLine() "><img src="images/add.png " alt=" " srcset=" "></button>
+                <button id="swap_button"><img src="images/switch.svg" alt=""></button>
+
+
             </div>
         </container>
     </main>
     </main>
 
-    <div class="test"></div>
+    <div class="test "></div>
 
 
     <div class=" main-containter ">
-        <input type="search " placeholder="Please enter your keywords here " id="search " value=" " onchange="onFilterByKW(this.value) ">
+        <input type="search " placeholder="Please enter your keywords here " value=" " onchange="onFilterByKW(this.value)">
         <container class="image-list ">
             <table>
             </table>

@@ -50,6 +50,10 @@ body {
     display: none;
 }
 
+.line2 {
+    display: none;
+}
+
 .canvas-container {
     display: inline-block;
 }
