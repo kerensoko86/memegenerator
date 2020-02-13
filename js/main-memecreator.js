@@ -14,15 +14,16 @@ function onInitMeme(id) {
 }
 
 function getColorFill() {
-    var elColor = document.getElementById('color-fill');
-    var colorValue = elColor.value;
+    var colorValue = document.getElementById('color-fill').value;
+    console.log(colorValue)
     setColorFill(colorValue);
-    renderText();
+    drawImg();
 }
 
 function getColorStroke() {
-    var elColor = document.getElementById('color-font');
-    var colorFont = elColor.value;
+    var colorFont = document.getElementById('color-font').value;
+    console.log(colorFont)
+
     setColorFont(colorFont);
     drawImg();
 }
@@ -65,6 +66,7 @@ function onAddLine() {
 function onSetText(value) {
     lineNum(gID);
     setText(value);
+
     renderText();
 }
 
@@ -90,11 +92,13 @@ function renderText() {
         gCtx.font = `${line.size}px ${line.font}`;
         gCtx.fillText(line.txt, line.location.x, line.location.y);
         gCtx.fillStyle = line.colorfill;
+
         gCtx.strokeStyle = line.colorfont;
         gCtx.textAlign = line.align;
         gCtx.strokeText(line.txt, line.location.x, line.location.y);
+        // drawImg();
+
     });
-    drawImg();
 }
 
 
@@ -115,7 +119,6 @@ function change() {
 function onClearLine(value) {
     clearLine(value)
     drawImg();
-
 }
 
 function toggleMenu() {

@@ -6,8 +6,8 @@ function createMeme() {
     var meme = {
         selectedImgId: 5,
         selectedLineIdx: 0,
-        lines: [{ txt: '', size: 60, align: 'left', colorfont: 'blue', colorfill: 'red', font: 'Impact', location: { x: 100, y: 100 } },
-            { txt: '', size: 60, align: 'left', colorfont: 'blue', colorfill: 'red', font: 'Impact', location: { x: 100, y: 300 } }
+        lines: [{ txt: '', size: 60, align: 'left', colorfont: '', colorfill: '', font: 'Impact', location: { x: 100, y: 100 } },
+            { txt: '', size: 60, align: 'left', colorfont: '', colorfill: '', font: 'Impact', location: { x: 100, y: 300 } }
         ]
     }
     return meme;
