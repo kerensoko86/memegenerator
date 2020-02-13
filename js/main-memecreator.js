@@ -83,18 +83,17 @@ function lineNum(el) {
     return id;
 }
 
-function onChange() {}
-
 function renderText() {
-    var meme = getMeme();
-    var lines = getMemeLines(meme.selectedLineIdx);
-    gCtx.font = `${lines.size}px ${lines.font}`;
-    gCtx.fillText(lines.txt, lines.location.x, lines.location.y);
-    gCtx.fillStyle = getColorFill();
-    gCtx.strokeStyle = getColorStroke();
-    gCtx.textAlign = lines.align;
-    gCtx.strokeText(lines.txt, lines.location.x, lines.location.y);
-    drawImg();
+    var lines = getMemeLines();
+    lines.forEach(line => {
+        gCtx.font = `${line.size}px ${line.font}`;
+        gCtx.fillText(line.txt, line.location.x, line.location.y);
+        gCtx.fillStyle = getColorFill(); //need to change to service func
+        gCtx.strokeStyle = getColorStroke(); //need to change to service func
+        gCtx.textAlign = line.align;
+        gCtx.strokeText(line.txt, line.location.x, line.location.y);
+        // drawImg();
+    });
 }
 
 
@@ -104,10 +103,22 @@ function onGetFontSize(diff) {
     drawImg();
 }
 
-document.getElementById('swap_button').onclick = function() {
-    var tmp = document.getElementById('0').value;
-    document.getElementById('0').value = document.getElementById('1').value;
-    setText(document.getElementById('0').value);
-    document.getElementById('1').value = tmp;
-    renderText()
-};
+function change() {
+    var lines = getMemeLines();
+    var tmp = lines[0].txt;
+    lines[0].txt = lines[1].txt;
+    lines[1].txt = tmp;
+    drawImg();
+}
+
+function onClearLine(value) {
+    clearLine(value)
+    drawImg();
+
+}
+
+function toggleMenu() {
+    document.body.classList.toggle('menu-open');
+    var elBtn = document.querySelector('.menu-btn');
+    elBtn.innerText = (elBtn.innerText === '☰') ? 'X' : '☰';
+}

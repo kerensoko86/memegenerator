@@ -1,14 +1,13 @@
 'use strict'
 
 var gMeme = createMeme();
-console.log(gMeme);
 
 function createMeme() {
     var meme = {
         selectedImgId: 5,
         selectedLineIdx: 0,
-        lines: [{ txt: '', size: 60, align: 'left', color: 'blue', font: 'Impact', location: { x: 100, y: 100 } },
-            { txt: '', size: 60, align: 'left', color: 'blue', font: 'Impact', location: { x: 100, y: 300 } }
+        lines: [{ txt: '', size: 60, align: 'left', colorfont: 'blue', colorfill: 'red', font: 'Impact', location: { x: 100, y: 100 } },
+            { txt: '', size: 60, align: 'left', colorfont: 'blue', colorfill: 'red', font: 'Impact', location: { x: 100, y: 300 } }
         ]
     }
     return meme;
@@ -22,9 +21,13 @@ function setSelectedLine(id) {
     return gMeme.selectedLineIdx = id;
 }
 
-function getMemeLines(selectedLineIdx) {
-    var lines = gMeme.lines[selectedLineIdx];
+function getMemeLines() {
+    var lines = gMeme.lines;
     return lines;
+}
+
+function clearLine(value) {
+    return gMeme.lines[gMeme.selectedLineIdx] = '';
 }
 
 function updateID(id) {
@@ -44,8 +47,12 @@ function setSize(diff) {
     return gMeme.lines[gMeme.selectedLineIdx].size += diff;
 }
 
-function setColor() {
-    return gMeme.lines[gMeme.selectedLineIdx].color = getColorFill();
+function setColorFont() {
+    return gMeme.lines[gMeme.selectedLineIdx].colorfont = getColorStroke();
+}
+
+function setColorFill() {
+    return gMeme.lines[gMeme.selectedLineIdx].colorfill = getColorFill();
 }
 
 function setText(value) {
