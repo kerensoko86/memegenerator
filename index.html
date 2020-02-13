@@ -44,8 +44,8 @@
                         <option value="Palatino ">Palatino</option>
                         <option value="Georgia ">Georgia</option>
                     </select>
-                <input type="color" name="color-fill" id="color-fill">
-                <input type="color" name="color-font" id="color-font">
+                <input type="color" name="color-fill" id="color-fill" value="" onclick="getColorFill()">
+                <input type="color" name="color-font" id="color-font" value="" onclick="getColorStroke()">
                 <button class="minus " onclick="onGetFontSize(-3) "><img src="images/minus.png "></button><button onclick="onGetFontSize(3) "><img src="images/plus.png "></button>
                 <button onclick="onClearLine(this)"><img src="images/trash.png " alt=" "></button>
                 <button value="right" onclick="onChangeAlign(this.value) "><img src="images/left.png "></button>
@@ -53,10 +53,11 @@
                 <button value="left" onclick="onChangeAlign(this.value) "><img src="images/right.png "></button>
                 <button value="up" onclick="onMoveLine(this.value) "><img src="images/up.png"></button>
                 <button value="down" onclick="onMoveLine(this.value) "><img src="images/down.png"></button>
-                <button onclick="onAddLine() "><img src="images/add.png " alt=" " srcset=" "></button>
+                <button onclick="onAddLine()"><img src="images/add.png"></button>
                 <button id="swap_button" onclick="change()"><img src="images/switch.svg" alt=""></button>
                 <input type="text" class="line1" value="" placeholder="Please enter your first line here" id="0" onclick="lineNum(this.id)" oninput="onSetText(value)">
-                <input type="text" class="line2" value="" placeholder="Please enter your first line here" id="1" onclick="lineNum(this.id)" oninput="onSetText(value)">
+                <a href="#" onclick="downloadCanvas(this)" download="">Download</a>
+
             </div>
         </container>
     </main>
@@ -66,7 +67,7 @@
         <input type="search " placeholder="Please enter your keywords here " value="" onchange="onFilterByKW(this.value)">
         <container class="image-list"></container>
     </div>
-    <footer>BE AWARE! The memes should be used only to make people happy</footer>
+    <footer>BE AWARE! These memes should be used only to make people happy</footer>
 
     <script src="js/util.js "></script>
     <script src="js/memegallery-service.js "></script>

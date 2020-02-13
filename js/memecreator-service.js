@@ -26,7 +26,7 @@ function getMemeLines() {
     return lines;
 }
 
-function clearLine(value) {
+function clearLine() {
     return gMeme.lines[gMeme.selectedLineIdx] = '';
 }
 
@@ -47,12 +47,12 @@ function setSize(diff) {
     return gMeme.lines[gMeme.selectedLineIdx].size += diff;
 }
 
-function setColorFont() {
-    return gMeme.lines[gMeme.selectedLineIdx].colorfont = getColorStroke();
+function setColorFont(colorFont) {
+    return gMeme.lines[gMeme.selectedLineIdx].colorfont = colorFont;
 }
 
-function setColorFill() {
-    return gMeme.lines[gMeme.selectedLineIdx].colorfill = getColorFill();
+function setColorFill(colorValue) {
+    return gMeme.lines[gMeme.selectedLineIdx].colorfill = colorValue;
 }
 
 function setText(value) {

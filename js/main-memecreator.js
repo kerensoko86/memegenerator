@@ -1,6 +1,9 @@
 var gCanvas;
 var gCtx;
+var gID = 0;
 
+
+var mouseClicked = false;
 
 function onInitMeme(id) {
     document.querySelector('.meme-container').style.display = 'block';
@@ -10,22 +13,18 @@ function onInitMeme(id) {
     drawImg(id);
 }
 
-function resizeCanvas() {
-    var elContainer = document.querySelector('.canvas-container');
-    gCanvas.width = elContainer.offsetWidth;
-    gCanvas.height = elContainer.offsetHeight;
-}
-
 function getColorFill() {
     var elColor = document.getElementById('color-fill');
     var colorValue = elColor.value;
-    return colorValue;
+    setColorFill(colorValue);
+    renderText();
 }
 
 function getColorStroke() {
     var elColor = document.getElementById('color-font');
-    var colorValue = elColor.value;
-    return colorValue;
+    var colorFont = elColor.value;
+    setColorFont(colorFont);
+    drawImg();
 }
 
 function downloadCanvas(elLink) {
@@ -41,9 +40,10 @@ function onChangeAlign(value) {
 
 function onMoveLine(value) {
     var meme = getMeme();
-    var lines = getMemeLines(meme.selectedLineIdx);
-    if (value === 'up') lines.location.y--;
-    if (value === 'down') lines.location.y++;
+    var lines = getMemeLines();
+    if (value === 'up') lines[meme.selectedLineIdx].location.y--;
+    if (value === 'down') lines[meme.selectedLineIdx].location.y++;
+    drawImg();
 }
 
 function drawImg() {
@@ -57,12 +57,13 @@ function drawImg() {
 }
 
 function onAddLine() {
-    var newLine = document.querySelector('.line2').style.display = 'block';
-    return newLine;
+    document.getElementById('0').value = '';
+    gID++;
 }
 
 
 function onSetText(value) {
+    lineNum(gID);
     setText(value);
     renderText();
 }
@@ -88,12 +89,12 @@ function renderText() {
     lines.forEach(line => {
         gCtx.font = `${line.size}px ${line.font}`;
         gCtx.fillText(line.txt, line.location.x, line.location.y);
-        gCtx.fillStyle = getColorFill(); //need to change to service func
-        gCtx.strokeStyle = getColorStroke(); //need to change to service func
+        gCtx.fillStyle = line.colorfill;
+        gCtx.strokeStyle = line.colorfont;
         gCtx.textAlign = line.align;
         gCtx.strokeText(line.txt, line.location.x, line.location.y);
-        // drawImg();
     });
+    drawImg();
 }
 
 
