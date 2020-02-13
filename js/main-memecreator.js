@@ -9,23 +9,19 @@ function onInitMeme(id) {
     document.querySelector('.meme-container').style.display = 'block';
     gCanvas = document.querySelector('#my-canvas');
     gCtx = gCanvas.getContext('2d');
-
     drawImg(id);
 }
 
 function getColorFill() {
     var colorValue = document.getElementById('color-fill').value;
-    console.log(colorValue)
     setColorFill(colorValue);
-    drawImg();
+    renderText();
 }
 
 function getColorStroke() {
     var colorFont = document.getElementById('color-font').value;
-    console.log(colorFont)
-
     setColorFont(colorFont);
-    drawImg();
+    renderText();
 }
 
 function downloadCanvas(elLink) {
@@ -44,7 +40,7 @@ function onMoveLine(value) {
     var lines = getMemeLines();
     if (value === 'up') lines[meme.selectedLineIdx].location.y--;
     if (value === 'down') lines[meme.selectedLineIdx].location.y++;
-    drawImg();
+    renderText();
 }
 
 function drawImg() {
@@ -66,18 +62,12 @@ function onAddLine() {
 function onSetText(value) {
     lineNum(gID);
     setText(value);
-
     renderText();
 }
 
 function onChangeFont(value) {
     setFont(value);
     renderText();
-}
-
-function chooseLine(el) {
-    var id = document.querySelector('#id')
-    return id;
 }
 
 function lineNum(el) {
@@ -92,12 +82,10 @@ function renderText() {
         gCtx.font = `${line.size}px ${line.font}`;
         gCtx.fillText(line.txt, line.location.x, line.location.y);
         gCtx.fillStyle = line.colorfill;
-
         gCtx.strokeStyle = line.colorfont;
         gCtx.textAlign = line.align;
         gCtx.strokeText(line.txt, line.location.x, line.location.y);
-        // drawImg();
-
+        drawImg();
     });
 }
 
@@ -105,10 +93,9 @@ function renderText() {
 function onGetFontSize(diff) {
     setSize(diff);
     renderText();
-    drawImg();
 }
 
-function change() {
+function onSwitchLinesText() {
     var lines = getMemeLines();
     var tmp = lines[0].txt;
     lines[0].txt = lines[1].txt;
@@ -116,9 +103,15 @@ function change() {
     drawImg();
 }
 
-function onClearLine(value) {
-    clearLine(value)
-    drawImg();
+function onChangeFocus() {
+    var meme = getMeme();
+    if (meme.selectedLineIdx === '1') meme.selectedLineIdx = '0';
+    if (meme.selectedLineIdx === '0') meme.selectedLineIdx = '1';
+}
+
+function onClearLine() {
+    clearLine()
+    renderText();
 }
 
 function toggleMenu() {
