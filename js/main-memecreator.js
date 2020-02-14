@@ -15,13 +15,13 @@ function onInitMeme(id) {
 function getColorFill() {
     var colorValue = document.getElementById('color-fill').value;
     setColorFill(colorValue);
-    renderText();
+    drawImg();
 }
 
 function getColorStroke() {
     var colorFont = document.getElementById('color-font').value;
     setColorFont(colorFont);
-    renderText();
+    drawImg();
 }
 
 function downloadCanvas(elLink) {
@@ -40,7 +40,7 @@ function onMoveLine(value) {
     var lines = getMemeLines();
     if (value === 'up') lines[meme.selectedLineIdx].location.y--;
     if (value === 'down') lines[meme.selectedLineIdx].location.y++;
-    renderText();
+    drawImg();
 }
 
 function drawImg() {
@@ -62,12 +62,12 @@ function onAddLine() {
 function onSetText(value) {
     lineNum(gID);
     setText(value);
-    renderText();
+    drawImg();
 }
 
 function onChangeFont(value) {
     setFont(value);
-    renderText();
+    drawImg();
 }
 
 function lineNum(el) {
@@ -80,19 +80,18 @@ function renderText() {
     var lines = getMemeLines();
     lines.forEach(line => {
         gCtx.font = `${line.size}px ${line.font}`;
-        gCtx.fillText(line.txt, line.location.x, line.location.y);
         gCtx.fillStyle = line.colorfill;
         gCtx.strokeStyle = line.colorfont;
         gCtx.textAlign = line.align;
+        gCtx.fillText(line.txt, line.location.x, line.location.y);
         gCtx.strokeText(line.txt, line.location.x, line.location.y);
-        drawImg();
     });
 }
 
 
 function onGetFontSize(diff) {
     setSize(diff);
-    renderText();
+    drawImg();
 }
 
 function onSwitchLinesText() {
@@ -104,14 +103,14 @@ function onSwitchLinesText() {
 }
 
 function onChangeFocus() {
-    var meme = getMeme();
-    if (meme.selectedLineIdx === '1') meme.selectedLineIdx = '0';
-    if (meme.selectedLineIdx === '0') meme.selectedLineIdx = '1';
+    var lines = getMemeLines();
+    var tmp = lines[0];
+    lines[0] = lines[1];
+    lines[1] = tmp;
 }
 
 function onClearLine() {
-    clearLine()
-    renderText();
+    clearLine();
 }
 
 function toggleMenu() {

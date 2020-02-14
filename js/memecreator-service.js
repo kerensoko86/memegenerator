@@ -26,8 +26,8 @@ function getMemeLines() {
     return lines;
 }
 
-function clearLine() {
-    return gMeme.lines[gMeme.selectedLineIdx] = '';
+function clearLine(id) {
+    return gMeme.lines[id] = '';
 }
 
 function updateID(id) {
