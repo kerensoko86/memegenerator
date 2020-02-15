@@ -20,7 +20,6 @@ function renderImages() {
 
 function onSetLang(lang) {
     setLang(lang);
-    // TODO: if lang is hebrew add RTL class
     if (lang === 'he') {
         document.body.classList.add('rtl');
     } else {

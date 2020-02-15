@@ -26,6 +26,7 @@ body {
 }
 
 .logo {
+    padding: 10px;
     font-family: cursive, sans-serif;
     text-transform: capitalize;
     color: #ffffff;
@@ -118,6 +119,10 @@ button {
     gap: 10px;
     font-size: 30px;
     text-align: center;
+}
+
+.custom-select {
+    margin-bottom: 20px;
 }
 
 footer {
@@ -240,18 +245,18 @@ img {
     }
 }
 
-@media (max-width:720px) {
+@media (max-width: 720px) {
     body {
-        min-height: 1000px;
+        min-height: 700px;
     }
     .inside {
         flex-direction: column;
         height: 700px;
     }
     #my-canvas {
-        width: 530px;
-        height: 530px;
-        margin-bottom: 20px;
+        width: 400px;
+        height: 400px;
+        margin-bottom: 10px;
     }
     .meme-container {
         height: 100%;

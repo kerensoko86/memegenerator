@@ -37,9 +37,14 @@ function onMouseMove(ev) {
 function draw(ev) {
     const offsetX = ev.offsetX;
     const offsetY = ev.offsetY;
-
     var meme = getMeme();
     var id = meme.selectedLineIdx;
+
+    if (offsetY < meme.lines[0].location.y + 100) {
+        id = 0;
+    } else {
+        id = 1;
+    }
     meme.lines[id].location.x = offsetX;
     meme.lines[id].location.y = offsetY;
 

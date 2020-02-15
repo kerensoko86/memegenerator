@@ -36,7 +36,6 @@ function createImages() {
     return gImages;
 }
 
-
 function createImage(id, url, keywords) {
     var image = {
         id: id,

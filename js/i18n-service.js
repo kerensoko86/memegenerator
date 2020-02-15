@@ -6,7 +6,7 @@ var gTrans = {
     },
     Memes: {
         en: 'Memes',
-        he: 'תמונות מצחיקות',
+        he: 'שמורים',
     },
     About: {
         en: 'About',

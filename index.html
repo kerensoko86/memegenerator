@@ -67,9 +67,10 @@
                     <button id="emoji-button"><img src="images/Layer.png" alt=""></button>
 
                     <input type="text " class="line1" value="" placeholder="Please enter your sentence here" id="0" onclick="lineNum(this.id)" oninput="onSetText(value)" data-trans="txt-line">
+
                     <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)">
 
-                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(event)">
                         <input name="img" id="imgData" type="hidden" />
                         <button class="btn" type="submit"><img src="images/share.png" alt="" srcset=""></button>
                         <a href="#" class="btn" onclick="downloadCanvas(this)" download="my-img.jpg"><img class="download" src="images/download.png"></a>
