@@ -18,15 +18,6 @@ body {
     margin-bottom: 40px;
 }
 
-footer {
-    background-color: blue;
-    width: 100%;
-    text-align: center;
-    color: white;
-    font-size: 20px;
-    font-family: cursive;
-}
-
 .logo {
     font-family: cursive, sans-serif;
     text-transform: capitalize;
@@ -38,6 +29,13 @@ footer {
 
 .menu-btn {
     display: none;
+}
+
+.kw {
+    width: 400px;
+    height: 30px;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .buttons-container {
@@ -113,6 +111,15 @@ button {
     gap: 10px;
     font-size: 30px;
     text-align: center;
+}
+
+footer {
+    background-color: blue;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-family: cursive;
 }
 
 

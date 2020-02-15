@@ -1,34 +1,35 @@
 'use strict'
 
 var gImages = createImages();
+var gKW = [];
 
 function createImages() {
     var gImages = [
-        _createImage(1, '1', ['trump', 'heart']),
-        _createImage(2, '2', ['dogs', 'cute']),
-        _createImage(3, '3', ['dogs', 'baby']),
-        _createImage(4, '4', ['cat', 'cute']),
-        _createImage(5, '5', ['keren', 'heart']),
-        _createImage(6, '6', ['keren', 'heart']),
-        _createImage(7, '7', ['keren', 'heart']),
-        _createImage(8, '8', ['keren', 'heart']),
-        _createImage(9, '9', ['keren', 'heart']),
-        _createImage(10, '10', ['keren', 'heart']),
-        _createImage(11, '11', ['keren', 'heart']),
-        _createImage(12, '12', ['keren', 'heart']),
-        _createImage(13, '13', ['keren', 'heart']),
-        _createImage(14, '14', ['keren', 'heart']),
-        _createImage(15, '15', ['keren', 'heart']),
-        _createImage(16, '16', ['keren', 'heart']),
-        _createImage(17, '17', ['keren', 'heart']),
-        _createImage(18, '18', ['keren', 'heart']),
-        _createImage(19, '19', ['keren', 'heart']),
-        _createImage(20, '20', ['keren', 'heart']),
-        _createImage(21, '21', ['keren', 'heart']),
-        _createImage(22, '22', ['keren', 'heart']),
-        _createImage(23, '23', ['keren', 'heart']),
-        _createImage(24, '24', ['keren', 'heart']),
-        _createImage(25, '25', ['keren', 'heart']),
+        createImage(1, '1', ['trump', 'funny']),
+        createImage(2, '2', ['dogs', 'cute']),
+        createImage(3, '3', ['dogs', 'baby']),
+        createImage(4, '4', ['cat', 'cute']),
+        createImage(5, '5', ['keren', 'heart']),
+        createImage(6, '6', ['keren', 'heart']),
+        createImage(7, '7', ['keren', 'heart']),
+        createImage(8, '8', ['keren', 'heart']),
+        createImage(9, '9', ['keren', 'heart']),
+        createImage(10, '10', ['keren', 'heart']),
+        createImage(11, '11', ['keren', 'heart']),
+        createImage(12, '12', ['keren', 'heart']),
+        createImage(13, '13', ['keren', 'heart']),
+        createImage(14, '14', ['keren', 'heart']),
+        createImage(15, '15', ['keren', 'heart']),
+        createImage(16, '16', ['keren', 'heart']),
+        createImage(17, '17', ['keren', 'heart']),
+        createImage(18, '18', ['keren', 'heart']),
+        createImage(19, '19', ['keren', 'heart']),
+        createImage(20, '20', ['keren', 'heart']),
+        createImage(21, '21', ['keren', 'heart']),
+        createImage(22, '22', ['keren', 'heart']),
+        createImage(23, '23', ['keren', 'heart']),
+        createImage(24, '24', ['keren', 'heart']),
+        createImage(25, '25', ['keren', 'heart']),
 
     ];
 
@@ -36,11 +37,11 @@ function createImages() {
 }
 
 
-function _createImage(id, url) {
+function createImage(id, url, keywords) {
     var image = {
         id: id,
         url: url,
-        keywords: []
+        keywords: keywords
     };
     return image;
 }
@@ -50,5 +51,12 @@ function getImages() {
 }
 
 function getImagesByKW(kw) {
-    return gImages.find(imageskeywords => imageskeywords.find(keyword => keyword === kw))
+    for (var i = 0; i < gImages.length; i++) {
+        for (var j = 0; j < gImages[i].keywords.length; j++) {
+            if (gImages[i].keywords[j] === kw) {
+                gKW.push(gImages[i]);
+            }
+        }
+    }
+    return gKW;
 }

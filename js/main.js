@@ -19,7 +19,18 @@ function renderImages(images) {
 }
 
 function onFilterByKW(value) {
-    getImagesByKW(value);
+
+    var images = getImagesByKW(value);
+    var strHTMLs = '';
+    strHTMLs += images.map(image =>
+        `<a href="#" onclick="onChangePage(${image.id})" data-id="${image.id}"><img class="inside-image" src="images/${image.url}.jpg"/img>
+        </a>`).join('');
+
+    var elimageList = document.querySelector('.image-list');
+    elimageList.innerHTML = strHTMLs;
+    if (document.querySelector('.kw').value === '') {
+        renderImages();
+    }
 }
 
 function onChangePage(id) {

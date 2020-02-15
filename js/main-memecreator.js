@@ -20,7 +20,7 @@ function loadSavedMemes() {
             image.setAttribute("src", savedMeme);
             image.setAttribute("width", "400");
             image.setAttribute("height", "400");
-            document.body.appendChild(image);
+            document.querySelector('.savedmemes').appendChild(image);
         })
 }
 

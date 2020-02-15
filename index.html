@@ -76,7 +76,9 @@
 
 
     <div class="main-containter ">
-        <input type="search " placeholder="Please enter your keywords here " value=" " onchange="onFilterByKW(this.value) ">
+        <!-- <input type="search " placeholder="Please enter your keywords here " value=" " onchang="onFilterByKW(this.value) "> -->
+
+        <input type="search" class="kw" placeholder="Please enter your search keywords here" value=" " oninput="onFilterByKW(value) ">
         <container class="image-list "></container>
     </div>
     <footer>BE AWARE! These memes should be used only to make people happy</footer>

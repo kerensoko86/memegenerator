@@ -2,7 +2,7 @@
 
 var gMeme = createMeme();
 
-var gSavedMemes = getSavedMemes()
+var gSavedMemes = getSavedMemes();
 
 function getSavedMemes() {
     var memes = loadFromStorage('memes');
@@ -11,9 +11,9 @@ function getSavedMemes() {
 
 function saveToMemesStorage(data) {
     gSavedMemes.push(data);
+    console.log(gSavedMemes);
     saveToStorage('memes', gSavedMemes);
 }
-
 
 function createMeme() {
     var meme = {
