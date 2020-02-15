@@ -5,7 +5,7 @@ var gMeme = createMeme();
 var gSavedMemes = getSavedMemes();
 
 function getSavedMemes() {
-    var memes = loadFromStorage('memes');
+    var memes = loadFromStorage('memes') || [];
     return memes;
 }
 
