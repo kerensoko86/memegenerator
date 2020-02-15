@@ -15,18 +15,20 @@
         <nav class="main-nav-container flex space-between align-center">
             <div class="logo">KerenS</div>
             <ul class="main-nav flex clean-list">
-                <li><a href="#">Gallery</a></li>
-                <li><a href="#">Memes</a></li>
+                <li><a href="index.html">Gallery</a></li>
+                <li><a href="memes.html">Memes</a></li>
                 <li><a href="#">About</a></li>
             </ul>
             <button class="menu-btn" onclick="toggleMenu()">☰</button>
         </nav>
     </header>
 
+    <div class="memes"></div>
+
     <main class="meme-container">
         <container class="inside">
             <div class="canvas-container">
-                <canvas id="my-canvas" height="600" width="600" style="border: 1px solid black;"></canvas>
+                <canvas id="my-canvas" height="500" width="500" style="border: 1px solid black;"></canvas>
             </div>
             <div class="buttons-container">
                 <select id="select_font " onchange="onChangeFont(this.value)">
@@ -47,7 +49,7 @@
                 <input type="color" name="color-fill" id="color-fill" value="" onchange="getColorFill()">
                 <input type="color" name="color-font" id="color-font" value="" onchange="getColorStroke()">
                 <button class="minus " onclick="onGetFontSize(-3) "><img src="images/minus.png "></button><button onclick="onGetFontSize(3) "><img src="images/plus.png "></button>
-                <button onclick="onClearLine()"><img src="images/trash.png " alt=" "></button>
+                <button onclick="onClearLine(id)"><img src="images/trash.png " alt=" "></button>
                 <button value="right" onclick="onChangeAlign(this.value) "><img src="images/left.png "></button>
                 <button value="center" onclick="onChangeAlign(this.value) "><img src="images/center.png "></button>
                 <button value="left" onclick="onChangeAlign(this.value) "><img src="images/right.png "></button>
@@ -56,20 +58,29 @@
                 <button onclick="onAddLine()"><img src="images/add.png"></button>
                 <button id="" onclick="onChangeFocus()"><img src="images/switch.svg "></button>
                 <button onclick="onSwitchLinesText() "><img src="images/turn.png"></button>
-                <input type="text " class="line1 " value=" " placeholder="Please enter your first line here " id="0" onclick="lineNum(this.id) " oninput="onSetText(value) ">
-                <a href="# " onclick="downloadCanvas(this) " download=" "><img class="download" src="images/download.png" alt="" srcset=""></a>
+                <button id="emoji-button"><img src="images/Layer.png" alt=""></button>
 
+                <input type="text " class="line1" value=" " placeholder="Please enter your line here" id="0" onclick="lineNum(this.id) " oninput="onSetText(value) ">
+                <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)">
+
+                <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                    <input name="img" id="imgData" type="hidden" />
+                    <button class="btn" type="submit"><img src="images/share.png" alt="" srcset=""></button>
+                    <a href="#" class="btn" onclick="downloadCanvas(this)" download="my-img.jpg"><img class="download" src="images/download.png"></a>
+                    <div class="share-container"></div>
+                </form>
+            </div>
             </div>
         </container>
     </main>
-    </main>
+
 
     <div class="main-containter ">
         <input type="search " placeholder="Please enter your keywords here " value=" " onchange="onFilterByKW(this.value) ">
         <container class="image-list "></container>
     </div>
     <footer>BE AWARE! These memes should be used only to make people happy</footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/emoji-button@latest/dist/index.min.js"></script>
     <script src="js/util.js "></script>
     <script src="js/memegallery-service.js "></script>
     <script src="js/memecreator-service.js "></script>

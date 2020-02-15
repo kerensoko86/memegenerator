@@ -3,14 +3,27 @@ var gCtx;
 var gID = 0;
 
 
-var mouseClicked = false;
 
 function onInitMeme(id) {
     document.querySelector('.meme-container').style.display = 'block';
     gCanvas = document.querySelector('#my-canvas');
     gCtx = gCanvas.getContext('2d');
     drawImg(id);
+
 }
+
+function loadSavedMemes() {
+    var savedMemes = getSavedMemes();
+    savedMemes.forEach(
+        savedMeme => {
+            var image = document.createElement('img');
+            image.setAttribute("src", savedMeme);
+            image.setAttribute("width", "400");
+            image.setAttribute("height", "400");
+            document.body.appendChild(image);
+        })
+}
+
 
 function getColorFill() {
     var colorValue = document.getElementById('color-fill').value;
@@ -27,7 +40,8 @@ function getColorStroke() {
 function downloadCanvas(elLink) {
     const data = gCanvas.toDataURL()
     elLink.href = data;
-    elLink.download = 'my-meme.jpg'
+    saveToMemesStorage(data);
+    elLink.download = 'my-meme.jpg';
 }
 
 function onChangeAlign(value) {
@@ -51,6 +65,7 @@ function drawImg() {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
         renderText();
     }
+
 }
 
 function onAddLine() {
@@ -110,7 +125,12 @@ function onChangeFocus() {
 }
 
 function onClearLine() {
-    clearLine();
+    var meme = getMeme();
+    var id = setSelectedLine(meme.selectedLineIdx);
+    console.log(id);
+    setText('');
+    drawImg();
+
 }
 
 function toggleMenu() {
@@ -118,3 +138,39 @@ function toggleMenu() {
     var elBtn = document.querySelector('.menu-btn');
     elBtn.innerText = (elBtn.innerText === '☰') ? 'X' : '☰';
 }
+
+function onImgInput(ev) {
+    loadImageFromInput(ev, renderCanvas)
+}
+
+function loadImageFromInput(ev, onImageReady) {
+    document.querySelector('.share-container').innerHTML = ''
+    var reader = new FileReader();
+
+    reader.onload = function(event) {
+        var img = new Image();
+        img.onload = onImageReady.bind(null, img)
+        img.src = event.target.result;
+    }
+    reader.readAsDataURL(ev.target.files[0]);
+}
+
+function renderCanvas(img) {
+    gCanvas.width = img.width;
+    gCanvas.height = img.height;
+    gCtx.drawImage(img, 0, 0);
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    const button = document.querySelector('#emoji-button');
+    const picker = new EmojiButton();
+
+    picker.on('emoji', emoji => {
+        document.querySelector('.line1').value += emoji;
+        drawImg();
+    });
+
+    button.addEventListener('click', () => {
+        picker.pickerVisible ? picker.hidePicker() : picker.showPicker(button);
+    });
+});

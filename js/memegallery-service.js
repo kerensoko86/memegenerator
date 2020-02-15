@@ -22,6 +22,14 @@ function createImages() {
         _createImage(16, '16', ['keren', 'heart']),
         _createImage(17, '17', ['keren', 'heart']),
         _createImage(18, '18', ['keren', 'heart']),
+        _createImage(19, '19', ['keren', 'heart']),
+        _createImage(20, '20', ['keren', 'heart']),
+        _createImage(21, '21', ['keren', 'heart']),
+        _createImage(22, '22', ['keren', 'heart']),
+        _createImage(23, '23', ['keren', 'heart']),
+        _createImage(24, '24', ['keren', 'heart']),
+        _createImage(25, '25', ['keren', 'heart']),
+
     ];
 
     return gImages;
@@ -36,20 +44,6 @@ function _createImage(id, url) {
     };
     return image;
 }
-
-function createMeme(txt, side) {
-    var meme = {
-        selectedImgId: getRandomIntInclusive(1, 100),
-        selectedLineIdx: 0,
-        lines: [{
-            txt: txt,
-            size: 20,
-            align: side,
-            color: getRandomColor(),
-        }]
-    }
-}
-
 
 function getImages() {
     return gImages;

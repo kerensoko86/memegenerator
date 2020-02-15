@@ -42,10 +42,10 @@ footer {
 
 .buttons-container {
     text-align: center;
-    width: 400px;
-    height: 400px;
-    padding: 50px;
-    margin-left: 100px;
+    width: 700px;
+    height: 700px;
+    padding: 20px;
+    margin-left: 50px;
 }
 
 button {
@@ -61,8 +61,8 @@ button {
 }
 
 .download {
-    width: 75px;
-    height: 75px;
+    width: 63px;
+    height: 63px;
 }
 
 .main-nav a {
@@ -109,6 +109,7 @@ button {
     border: 1px black solid;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-rows: repeat(8, 5vw);
     gap: 10px;
     font-size: 30px;
     text-align: center;
