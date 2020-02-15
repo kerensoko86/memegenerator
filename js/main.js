@@ -6,7 +6,7 @@ function onInit() {
     // doTrans();
 }
 
-function renderImages(images) {
+function renderImages() {
     var images = getImages();
     var strHTMLs = '';
     strHTMLs += images.map(image =>
