@@ -61,7 +61,7 @@ function getImagesByKW(kw) {
     return gKW;
 }
 
-function getFilterIcons() {
+function setArrOfKW() {
     var arr = []
     for (var i = 0; i < gImages.length; i++) {
         arr.push(...gImages[i].keywords)

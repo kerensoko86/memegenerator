@@ -61,7 +61,7 @@ function onChangePage(id) {
 }
 
 function onRenderPopularKw() {
-    var keys = getFilterIcons();
+    var keys = setArrOfKW();
     console.log(keys);
     let elSearchBtns = document.querySelector('.search-btn');
     let strHTMLs = '';
