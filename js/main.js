@@ -29,7 +29,6 @@ function onSetLang(lang) {
 }
 
 function onFilterByKW(value) {
-
     var images = getImagesByKW(value);
     var strHTMLs = '';
     strHTMLs += images.map(image =>
@@ -41,6 +40,18 @@ function onFilterByKW(value) {
     if (document.querySelector('.kw').value === '') {
         renderImages();
     }
+}
+
+function onFilterByKW2(value) {
+    var images = getImagesByKW(value);
+    var strHTMLs = '';
+    strHTMLs += images.map(image =>
+        `<a href="#" onclick="onChangePage(${image.id})" data-id="${image.id}"><img class="inside-image" src="images/${image.url}.jpg"/img>
+        </a>`).join('');
+
+    var elimageList = document.querySelector('.image-list');
+    elimageList.innerHTML = strHTMLs;
+
 }
 
 function onChangePage(id) {
