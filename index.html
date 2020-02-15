@@ -22,22 +22,22 @@
             <button class="menu-btn" onclick="toggleMenu()">☰</button>
         </nav>
     </header>
-    <container>
+    <div>
         <h4 data-trans="change">Change Language</h4>
         <div class="input-group mb-3">
             <select class="custom-select my-bgc" onchange="onSetLang(this.value)" id="inputGroupSelect03" aria-label="Example select with button addon">
             <option value="en">English</option>
             <option value="he">עברית</option>
         </select>
-    </container>
+        </div>
 
-    <main class="meme-container">
-        <container class="inside">
-            <div class="canvas-container">
-                <canvas id="my-canvas" height="500" width="500" style="border: 1px solid black;"></canvas>
-            </div>
-            <div class="buttons-container">
-                <select id="select_font " onchange="onChangeFont(this.value)">
+        <main class="meme-container">
+            <container class="inside">
+                <div class="canvas-container">
+                    <canvas id="my-canvas" height="500" width="500" style="border: 1px solid black;"></canvas>
+                </div>
+                <div class="buttons-container">
+                    <select id="select_font " onchange="onChangeFont(this.value)">
                         <option value="Arial ">Arial</option>
                         <option value="Sans Serif">Sans Serif</option>
                         <option value="Comic Sans MS ">Comic Sans MS</option>
@@ -52,32 +52,32 @@
                         <option value="Palatino ">Palatino</option>
                         <option value="Georgia ">Georgia</option>
                     </select>
-                <input type="color" name="color-fill" id="color-fill" value="" onchange="getColorFill()">
-                <input type="color" name="color-font" id="color-font" value="" onchange="getColorStroke()">
-                <button class="minus " onclick="onGetFontSize(-3) "><img src="images/minus.png "></button><button onclick="onGetFontSize(3) "><img src="images/plus.png "></button>
-                <button onclick="onClearLine(id)"><img src="images/trash.png " alt=" "></button>
-                <button value="right" onclick="onChangeAlign(this.value) "><img src="images/left.png "></button>
-                <button value="center" onclick="onChangeAlign(this.value) "><img src="images/center.png "></button>
-                <button value="left" onclick="onChangeAlign(this.value) "><img src="images/right.png "></button>
-                <button value="up" onclick="onMoveLine(this.value) "><img src="images/up.png"></button>
-                <button value="down" onclick="onMoveLine(this.value) "><img src="images/down.png"></button>
-                <button onclick="onAddLine()"><img src="images/add.png"></button>
-                <button id="" onclick="onChangeFocus()"><img src="images/switch.svg "></button>
-                <button onclick="onSwitchLinesText() "><img src="images/turn.png"></button>
-                <button id="emoji-button"><img src="images/Layer.png" alt=""></button>
+                    <input type="color" name="color-fill" id="color-fill" value="" onchange="getColorFill()">
+                    <input type="color" name="color-font" id="color-font" value="" onchange="getColorStroke()">
+                    <button class="minus " onclick="onGetFontSize(-3) "><img src="images/minus.png "></button><button onclick="onGetFontSize(3) "><img src="images/plus.png "></button>
+                    <button onclick="onClearLine(id)"><img src="images/trash.png " alt=" "></button>
+                    <button value="right" onclick="onChangeAlign(this.value) "><img src="images/left.png "></button>
+                    <button value="center" onclick="onChangeAlign(this.value) "><img src="images/center.png "></button>
+                    <button value="left" onclick="onChangeAlign(this.value) "><img src="images/right.png "></button>
+                    <button value="up" onclick="onMoveLine(this.value) "><img src="images/up.png"></button>
+                    <button value="down" onclick="onMoveLine(this.value) "><img src="images/down.png"></button>
+                    <button onclick="onAddLine()"><img src="images/add.png"></button>
+                    <button id="" onclick="onChangeFocus()"><img src="images/switch.svg "></button>
+                    <button onclick="onSwitchLinesText() "><img src="images/turn.png"></button>
+                    <button id="emoji-button"><img src="images/Layer.png" alt=""></button>
 
-                <input type="text " class="line1" value="" placeholder="Please enter your sentence here" id="0" onclick="lineNum(this.id)" oninput="onSetText(value)" data-trans="txt-line">
-                <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)">
+                    <input type="text " class="line1" value="" placeholder="Please enter your sentence here" id="0" onclick="lineNum(this.id)" oninput="onSetText(value)" data-trans="txt-line">
+                    <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)">
 
-                <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
-                    <input name="img" id="imgData" type="hidden" />
-                    <button class="btn" type="submit"><img src="images/share.png" alt="" srcset=""></button>
-                    <a href="#" class="btn" onclick="downloadCanvas(this)" download="my-img.jpg"><img class="download" src="images/download.png"></a>
-                    <div class="share-container"></div>
-                </form>
-            </div>
-            </div>
-        </container>
+                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                        <input name="img" id="imgData" type="hidden" />
+                        <button class="btn" type="submit"><img src="images/share.png" alt="" srcset=""></button>
+                        <a href="#" class="btn" onclick="downloadCanvas(this)" download="my-img.jpg"><img class="download" src="images/download.png"></a>
+                        <div class="share-container"></div>
+                    </form>
+                </div>
+    </div>
+    </container>
     </main>
 
 

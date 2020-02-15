@@ -84,10 +84,10 @@ button {
 }
 
 .main-nav a:hover {
-    color: #58c93a;
-    border-color: #58c93a;
-    box-shadow: -1px 0 0 #1d1d1d, inset 0 -6px 0 #58c93a;
-    background-color: #292929;
+    color: white;
+    border-color: white;
+    box-shadow: -1px 0 0, inset 0 -6px 0 white;
+    background-color: transparent;
 }
 
 .main-containter {
@@ -242,7 +242,7 @@ img {
 
 @media (max-width:720px) {
     body {
-        min-height: 800px;
+        min-height: 1000px;
     }
     .inside {
         flex-direction: column;

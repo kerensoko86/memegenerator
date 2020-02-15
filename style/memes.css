@@ -59,10 +59,10 @@ footer {
 }
 
 .main-nav a:hover {
-    color: #58c93a;
-    border-color: #58c93a;
-    box-shadow: -1px 0 0 #1d1d1d, inset 0 -6px 0 #58c93a;
-    background-color: #292929;
+    color: white;
+    border-color: white;
+    box-shadow: -1px 0 0, inset 0 -6px 0 white;
+    background-color: transparent;
 }
 
 
