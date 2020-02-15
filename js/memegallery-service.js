@@ -60,3 +60,16 @@ function getImagesByKW(kw) {
     }
     return gKW;
 }
+
+function getFilterIcons() {
+    var arr = []
+    for (var i = 0; i < gImages.length; i++) {
+        arr.push(...gImages[i].keywords)
+    }
+
+    var filteredArray = arr.filter(function(item, pos) {
+        return arr.indexOf(item) == pos;
+    });
+
+    return filteredArray;
+}

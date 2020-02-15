@@ -1,9 +1,9 @@
 var gMeme;
-var gKeywords = { 'happy': 12, 'funny puk': 1 }
 
 function onInit() {
     renderImages();
     doTrans();
+    onRenderPopularKw();
 }
 
 function renderImages() {
@@ -42,7 +42,7 @@ function onFilterByKW(value) {
     }
 }
 
-function onFilterByKW2(value) {
+function onFilterByKw2(value) {
     var images = getImagesByKW(value);
     var strHTMLs = '';
     strHTMLs += images.map(image =>
@@ -58,4 +58,16 @@ function onChangePage(id) {
     document.querySelector('.main-containter').style.display = 'none';
     updateID(id);
     onInitMeme(id);
+}
+
+function onRenderPopularKw() {
+    var keys = getFilterIcons();
+    console.log(keys);
+    let elSearchBtns = document.querySelector('.search-btn');
+    let strHTMLs = '';
+    keys.forEach(key => {
+        let keyName = key.charAt(0) + key.slice(1)
+        strHTMLs += `<button value="${keyName}" class="search-btn buttonkw" onclick="onFilterByKw2(value)">${keyName}</button>`
+    });
+    elSearchBtns.innerHTML = strHTMLs;
 }
