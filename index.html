@@ -15,13 +15,21 @@
         <nav class="main-nav-container flex space-between align-center">
             <div class="logo">KerenS</div>
             <ul class="main-nav flex clean-list">
-                <li><a href="index.html">Gallery</a></li>
-                <li><a href="memes.html">Memes</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="index.html" data-trans="Gallery">Gallery</a></li>
+                <li><a href="memes.html" data-trans="Memes">Memes</a></li>
+                <li><a href="#" data-trans="About">About</a></li>
             </ul>
             <button class="menu-btn" onclick="toggleMenu()">☰</button>
         </nav>
     </header>
+    <container>
+        <h4 data-trans="change">Change Language</h4>
+        <div class="input-group mb-3">
+            <select class="custom-select my-bgc" onchange="onSetLang(this.value)" id="inputGroupSelect03" aria-label="Example select with button addon">
+            <option value="en">English</option>
+            <option value="he">עברית</option>
+        </select>
+    </container>
 
     <main class="meme-container">
         <container class="inside">
@@ -58,7 +66,7 @@
                 <button onclick="onSwitchLinesText() "><img src="images/turn.png"></button>
                 <button id="emoji-button"><img src="images/Layer.png" alt=""></button>
 
-                <input type="text " class="line1" value=" " placeholder="Please enter your line here" id="0" onclick="lineNum(this.id) " oninput="onSetText(value) ">
+                <input type="text " class="line1" value="" placeholder="Please enter your sentence here" id="0" onclick="lineNum(this.id)" oninput="onSetText(value)" data-trans="txt-line">
                 <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)">
 
                 <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
@@ -74,11 +82,12 @@
 
 
     <div class="main-containter ">
-        <input type="text" class="kw" placeholder="Please enter your search keywords here" value="" oninput="onFilterByKW(value)" />
+        <input type="text" class="kw" placeholder="Please enter your search keywords here" value="" data-trans="txt-kw" oninput="onFilterByKW(value)" />
         <container class="image-list "></container>
 
     </div>
-    <footer>BE AWARE! These memes should be used only to make people happy</footer>
+    <footer data-trans="footer">BE AWARE! These memes should be used only to make people happy</footer>
+    <script src="js/i18n-service.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/emoji-button@latest/dist/index.min.js"></script>
     <script src="js/util.js "></script>
     <script src="js/memegallery-service.js "></script>

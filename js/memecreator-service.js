@@ -11,7 +11,6 @@ function getSavedMemes() {
 
 function saveToMemesStorage(data) {
     gSavedMemes.push(data);
-    console.log(gSavedMemes);
     saveToStorage('memes', gSavedMemes);
 }
 
@@ -26,7 +25,8 @@ function createMeme() {
                 colorfont: '',
                 colorfill: '',
                 font: 'Impact',
-                location: { x: 200, y: 100 }
+                location: { x: 200, y: 100 },
+                textWidth: 0
             },
             {
                 txt: '',
@@ -35,19 +35,21 @@ function createMeme() {
                 colorfont: '',
                 colorfill: '',
                 font: 'Impact',
-                location: { x: 200, y: 400 }
+                location: { x: 200, y: 400 },
+                textWidth: 0
             }
         ]
     }
     return meme;
 }
 
+
 function getMeme() {
     return gMeme;
 }
 
 function setSelectedLine(id) {
-    return gMeme.selectedLineIdx = id;
+    gMeme.selectedLineIdx = id;
 }
 
 function getMemeLines() {
@@ -60,29 +62,28 @@ function updateID(id) {
 }
 
 function updateLocation(value) {
-    return gMeme.lines[gMeme.selectedLineIdx].align = value;
+    gMeme.lines[gMeme.selectedLineIdx].align = value;
 }
 
 
 function setFont(value) {
-    return gMeme.lines[gMeme.selectedLineIdx].font = value;
+    gMeme.lines[gMeme.selectedLineIdx].font = value;
 }
 
 function setSize(diff) {
-    return gMeme.lines[gMeme.selectedLineIdx].size += diff;
+    gMeme.lines[gMeme.selectedLineIdx].size += diff;
 }
 
 function setColorFont(colorFont) {
-    return gMeme.lines[gMeme.selectedLineIdx].colorfont = colorFont;
+    gMeme.lines[gMeme.selectedLineIdx].colorfont = colorFont;
 }
 
 function setColorFill(colorValue) {
-    return gMeme.lines[gMeme.selectedLineIdx].colorfill = colorValue;
+    gMeme.lines[gMeme.selectedLineIdx].colorfill = colorValue;
 }
 
 function setText(value) {
-    return gMeme.lines[gMeme.selectedLineIdx].txt = value;
-
+    gMeme.lines[gMeme.selectedLineIdx].txt = value;
 }
 
 function uploadImg(elForm, ev) {

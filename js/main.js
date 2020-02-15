@@ -3,7 +3,7 @@ var gKeywords = { 'happy': 12, 'funny puk': 1 }
 
 function onInit() {
     renderImages();
-    // doTrans();
+    doTrans();
 }
 
 function renderImages() {
@@ -15,7 +15,18 @@ function renderImages() {
 
     var elimageList = document.querySelector('.image-list');
     elimageList.innerHTML = strHTMLs;
-    // doTrans();
+    doTrans();
+}
+
+function onSetLang(lang) {
+    setLang(lang);
+    // TODO: if lang is hebrew add RTL class
+    if (lang === 'he') {
+        document.body.classList.add('rtl');
+    } else {
+        document.body.classList.remove('rtl');
+    }
+    renderImages();
 }
 
 function onFilterByKW(value) {

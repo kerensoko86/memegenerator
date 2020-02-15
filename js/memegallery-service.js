@@ -51,6 +51,7 @@ function getImages() {
 }
 
 function getImagesByKW(kw) {
+    gKW = [];
     for (var i = 0; i < gImages.length; i++) {
         for (var j = 0; j < gImages[i].keywords.length; j++) {
             if (gImages[i].keywords[j] === kw) {

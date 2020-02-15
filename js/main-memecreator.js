@@ -1,60 +1,14 @@
 var gCanvas;
 var gCtx;
 var gID = 0;
-
-
+var mouseClicked = false;
 
 function onInitMeme(id) {
     document.querySelector('.meme-container').style.display = 'block';
     gCanvas = document.querySelector('#my-canvas');
     gCtx = gCanvas.getContext('2d');
+
     drawImg(id);
-
-}
-
-function loadSavedMemes() {
-    var savedMemes = getSavedMemes();
-    savedMemes.forEach(
-        savedMeme => {
-            var image = document.createElement('img');
-            image.setAttribute("src", savedMeme);
-            image.setAttribute("width", "400");
-            image.setAttribute("height", "400");
-            document.querySelector('.savedmemes').appendChild(image);
-        })
-}
-
-
-function getColorFill() {
-    var colorValue = document.getElementById('color-fill').value;
-    setColorFill(colorValue);
-    drawImg();
-}
-
-function getColorStroke() {
-    var colorFont = document.getElementById('color-font').value;
-    setColorFont(colorFont);
-    drawImg();
-}
-
-function downloadCanvas(elLink) {
-    const data = gCanvas.toDataURL()
-    elLink.href = data;
-    saveToMemesStorage(data);
-    elLink.download = 'my-meme.jpg';
-}
-
-function onChangeAlign(value) {
-    updateLocation(value);
-    drawImg();
-}
-
-function onMoveLine(value) {
-    var meme = getMeme();
-    var lines = getMemeLines();
-    if (value === 'up') lines[meme.selectedLineIdx].location.y--;
-    if (value === 'down') lines[meme.selectedLineIdx].location.y++;
-    drawImg();
 }
 
 function drawImg() {
@@ -65,30 +19,31 @@ function drawImg() {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
         renderText();
     }
-
 }
 
-function onAddLine() {
-    document.getElementById('0').value = '';
-    gID++;
+document.querySelector('#my-canvas').addEventListener("click", onMouseClick, false);
+document.querySelector('#my-canvas').addEventListener("mousemove", onMouseMove, false);
+
+function onMouseClick(ev) {
+    mouseClicked = !mouseClicked;
 }
 
+function onMouseMove(ev) {
+    if (mouseClicked) {
+        draw(ev);
+    }
+}
 
-function onSetText(value) {
-    lineNum(gID);
-    setText(value);
+function draw(ev) {
+    const offsetX = ev.offsetX;
+    const offsetY = ev.offsetY;
+
+    var meme = getMeme();
+    var id = meme.selectedLineIdx;
+    meme.lines[id].location.x = offsetX;
+    meme.lines[id].location.y = offsetY;
+
     drawImg();
-}
-
-function onChangeFont(value) {
-    setFont(value);
-    drawImg();
-}
-
-function lineNum(el) {
-    var id = el;
-    setSelectedLine(id);
-    return id;
 }
 
 function renderText() {
@@ -103,6 +58,60 @@ function renderText() {
     });
 }
 
+function loadSavedMemes() {
+    var savedMemes = getSavedMemes();
+    savedMemes.forEach(
+        savedMeme => {
+            var image = document.createElement('img');
+            image.setAttribute("src", savedMeme);
+            image.setAttribute("width", "400");
+            image.setAttribute("height", "400");
+            document.querySelector('.savedmemes').appendChild(image);
+        })
+}
+
+// Changes lines attributes and other buttons
+function getColorFill() {
+    var colorValue = document.getElementById('color-fill').value;
+    setColorFill(colorValue);
+    drawImg();
+    doTrans();
+}
+
+function getColorStroke() {
+    var colorFont = document.getElementById('color-font').value;
+    setColorFont(colorFont);
+    drawImg();
+}
+
+function onChangeAlign(value) {
+    updateLocation(value);
+    drawImg();
+}
+
+function onChangeFont(value) {
+    setFont(value);
+    drawImg();
+}
+
+function onMoveLine(value) {
+    var meme = getMeme();
+    var lines = getMemeLines();
+    if (value === 'up') lines[meme.selectedLineIdx].location.y--;
+    if (value === 'down') lines[meme.selectedLineIdx].location.y++;
+    drawImg();
+}
+
+function onAddLine() {
+    document.getElementById('0').value = '';
+    gID++;
+}
+
+function onSetText(value) {
+    lineNum(gID);
+    setText(value);
+    drawImg();
+}
 
 function onGetFontSize(diff) {
     setSize(diff);
@@ -126,11 +135,15 @@ function onChangeFocus() {
 
 function onClearLine() {
     var meme = getMeme();
-    var id = setSelectedLine(meme.selectedLineIdx);
-    console.log(id);
+    setSelectedLine(meme.selectedLineIdx);
     setText('');
     drawImg();
+}
 
+function lineNum(el) {
+    var id = el;
+    setSelectedLine(id);
+    return id;
 }
 
 function toggleMenu() {
@@ -139,8 +152,15 @@ function toggleMenu() {
     elBtn.innerText = (elBtn.innerText === '☰') ? 'X' : '☰';
 }
 
+function downloadCanvas(elLink) {
+    const data = gCanvas.toDataURL()
+    elLink.href = data;
+    saveToMemesStorage(data);
+    elLink.download = 'my-meme.jpg';
+}
+
 function onImgInput(ev) {
-    loadImageFromInput(ev, renderCanvas)
+    loadImageFromInput(ev, renderCanvas);
 }
 
 function loadImageFromInput(ev, onImageReady) {
