@@ -60,6 +60,12 @@ function onChangePage(id) {
     onInitMeme(id);
 }
 
+function onSave(elLink) {
+    var imgContent = gCanvas.toDataURL('image/jpeg');
+    elLink.href = imgContent
+}
+
+
 function onRenderPopularKw() {
     var keys = setArrOfKW();
     console.log(keys);
