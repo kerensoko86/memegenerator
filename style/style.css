@@ -374,9 +374,9 @@
     }
     
     @media (max-width: 720px) {
-        .lng {
+        /* .lng {
             margin-bottom: 60px;
-        }
+        } */
         .inside {
             flex-direction: column;
             align-items: center;
