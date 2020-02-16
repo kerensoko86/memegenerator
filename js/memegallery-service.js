@@ -23,14 +23,6 @@ function createImages() {
         createImage(16, '16', ['keren', 'heart']),
         createImage(17, '17', ['keren', 'heart']),
         createImage(18, '18', ['keren', 'heart']),
-        createImage(19, '19', ['keren', 'heart']),
-        createImage(20, '20', ['keren', 'heart']),
-        createImage(21, '21', ['keren', 'heart']),
-        createImage(22, '22', ['keren', 'heart']),
-        createImage(23, '23', ['keren', 'heart']),
-        createImage(24, '24', ['keren', 'heart']),
-        createImage(25, '25', ['keren', 'heart']),
-
     ];
 
     return gImages;
