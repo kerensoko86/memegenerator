@@ -52,31 +52,31 @@
                         <option value="Palatino ">Palatino</option>
                         <option value="Georgia ">Georgia</option>
                     </select>
-                    <input type="color" name="color-fill" id="color-fill" value="" onchange="getColorFill()">
-                    <input type="color" name="color-font" id="color-font" value="" onchange="getColorStroke()">
-                    <button class="minus " onclick="onGetFontSize(-3) "><img src="images/minus.png "></button><button onclick="onGetFontSize(3) "><img src="images/plus.png "></button>
-                    <button onclick="onClearLine(id)"><img src="images/trash.png " alt=" "></button>
+                    <input title="Change font color" type="color" name="color-fill" id="color-fill" value="" onchange="getColorFill()">
+                    <input title="Change the border of the font color" type="color" name="color-font" id="color-font" value="" onchange="getColorStroke()">
+                    <button title="Change font size" class="minus " onclick="onGetFontSize(-3) "><img src="images/minus.png "></button><button title="Change font size" onclick="onGetFontSize(3) "><img src="images/plus.png "></button>
+                    <button title="Delete line" onclick="onClearLine(id)"><img src="images/trash.png " alt=" "></button>
                     <button value="right" onclick="onChangeAlign(this.value) "><img src="images/left.png "></button>
                     <button value="center" onclick="onChangeAlign(this.value) "><img src="images/center.png "></button>
                     <button value="left" onclick="onChangeAlign(this.value) "><img src="images/right.png "></button>
-                    <button value="up" onclick="onMoveLine(this.value) "><img src="images/up.png"></button>
-                    <button value="down" onclick="onMoveLine(this.value) "><img src="images/down.png"></button>
-                    <button onclick="onAddLine()"><img src="images/add.png"></button>
-                    <button id="" onclick="onChangeFocus()"><img src="images/switch.svg "></button>
-                    <button onclick="onSwitchLinesText() "><img src="images/turn.png"></button>
-                    <button id="emoji-button"><img src="images/Layer.png" alt=""></button>
+                    <button title="Move line up" value="up" onclick="onMoveLine(this.value) "><img src="images/up.png"></button>
+                    <button title="Move line down" value="down" onclick="onMoveLine(this.value) "><img src="images/down.png"></button>
+                    <button title="Add addittional line" onclick="onAddLine()"><img src="images/add.png"></button>
+                    <button title="Move to the second line" id="" onclick="onChangeFocus()"><img src="images/switch.svg "></button>
+                    <button title="Switch between the lines" onclick="onSwitchLinesText() "><img src="images/turn.png"></button>
+                    <button title="Add an emoji" id="emoji-button"><img src="images/Layer.png" alt=""></button>
 
                     <input type="text " class="line1" value="" placeholder="Please enter your sentence here" id="0" onclick="lineNum(this.id)" oninput="onSetText(value)" data-trans="txt-line">
 
-                    <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)">
+                    <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
 
-                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(event)">
-
+                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
                         <input name="img" id="imgData" type="hidden" />
-                        <button class="btn" type="submit"><img src="images/share.png" alt="" srcset=""></button>
-                        <a href="#" class="btn" onclick="downloadCanvas(this)" download="my-img.jpg"><img class="download" src="images/save.png"></a>
+                        <button class="btn" type="submit"><img src="images/share.png"></button>
+                        <a class="download" href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg"><img class="download" src="images/save.png" /></a>
                         <div class="share-container"></div>
                     </form>
+
                 </div>
     </div>
     </container>

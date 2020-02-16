@@ -164,8 +164,23 @@ function downloadCanvas(elLink) {
     elLink.download = 'my-meme.jpg';
 }
 
+window.addEventListener('DOMContentLoaded', () => {
+    const button = document.querySelector('#emoji-button');
+    const picker = new EmojiButton();
+
+    picker.on('emoji', emoji => {
+        document.querySelector('.line1').value += emoji;
+        drawImg();
+    });
+
+    button.addEventListener('click', () => {
+        picker.pickerVisible ? picker.hidePicker() : picker.showPicker(button);
+    });
+});
+
+
 function onImgInput(ev) {
-    loadImageFromInput(ev, renderCanvas);
+    loadImageFromInput(ev, renderCanvas)
 }
 
 function loadImageFromInput(ev, onImageReady) {
@@ -185,17 +200,3 @@ function renderCanvas(img) {
     gCanvas.height = img.height;
     gCtx.drawImage(img, 0, 0);
 }
-
-window.addEventListener('DOMContentLoaded', () => {
-    const button = document.querySelector('#emoji-button');
-    const picker = new EmojiButton();
-
-    picker.on('emoji', emoji => {
-        document.querySelector('.line1').value += emoji;
-        drawImg();
-    });
-
-    button.addEventListener('click', () => {
-        picker.pickerVisible ? picker.hidePicker() : picker.showPicker(button);
-    });
-});
