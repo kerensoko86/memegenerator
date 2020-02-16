@@ -374,9 +374,9 @@
     }
     
     @media (max-width: 720px) {
-        /* .lng {
+        .lng {
             margin-bottom: 60px;
-        } */
+        }
         .inside {
             flex-direction: column;
             align-items: center;
@@ -384,7 +384,7 @@
         #my-canvas {
             width: 430px;
             height: 430px;
-            margin-top: 20px;
+            margin-top: 350px;
         }
         .meme-container {
             height: 100%;
