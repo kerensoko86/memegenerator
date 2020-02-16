@@ -384,7 +384,7 @@
         #my-canvas {
             width: 430px;
             height: 430px;
-            margin-top: 380px;
+            margin-top: 20px;
         }
         .meme-container {
             height: 100%;
@@ -410,7 +410,6 @@
         #my-canvas {
             width: 300px;
             height: 300px;
-            margin-top: 310px;
         }
         .kw {
             width: 300px;
