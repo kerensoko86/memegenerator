@@ -26,7 +26,6 @@ function createMeme() {
                 colorfill: '',
                 font: 'Impact',
                 location: { x: 200, y: 100 },
-                textWidth: 0
             },
             {
                 txt: '',
@@ -36,7 +35,6 @@ function createMeme() {
                 colorfill: '',
                 font: 'Impact',
                 location: { x: 200, y: 400 },
-                textWidth: 0
             }
         ]
     }
@@ -87,7 +85,7 @@ function setText(value) {
 }
 
 function setEmoji(emoji) {
-    gMeme.lines[gMeme.selectedLineIdx].txt = gMeme.lines[gMeme.selectedLineIdx].txt + emoji;
+    gMeme.lines[gMeme.selectedLineIdx].txt += emoji;
 }
 
 function uploadImg(elForm, ev) {

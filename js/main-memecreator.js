@@ -169,6 +169,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const picker = new EmojiButton();
 
     picker.on('emoji', emoji => {
+        document.querySelector('.line1').value += emoji;
         setEmoji(emoji);
         drawImg();
     });
