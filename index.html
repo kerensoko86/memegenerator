@@ -26,8 +26,8 @@
         <h4 data-trans="change">Change Language</h4>
         <div class="input-group mb-3">
             <select class="custom-select my-bgc" onchange="onSetLang(this.value)" id="inputGroupSelect03" aria-label="Example select with button addon">
-            <option value="en">English</option>
-            <option value="he">עברית</option>
+                <option value="en">English</option>
+                <option value="he">עברית</option>
         </select>
         </div>
 
@@ -36,46 +36,58 @@
                 <div class="canvas-container">
                     <canvas id="my-canvas" height="500" width="500" style="border: 1px solid black;"></canvas>
                 </div>
-                <div class="buttons-container">
-                    <select id="select_font " onchange="onChangeFont(this.value)">
-                        <option value="Arial ">Arial</option>
-                        <option value="Sans Serif">Sans Serif</option>
-                        <option value="Comic Sans MS ">Comic Sans MS</option>
-                        <option value="Times New Roman ">Times New Roman</option>
-                        <option value="Courier New ">Courier New</option>
-                        <option value="Verdana ">Verdana</option>
-                        <option value="Trebuchet MS ">Trebuchet MS</option>
-                        <option value="Arial Black ">Arial Black</option>
-                        <option value="Impact" selected>Impact</option>
-                        <option value="Bookman">Bookman</option>
-                        <option value="Garamond">Garamond</option>
-                        <option value="Palatino ">Palatino</option>
-                        <option value="Georgia ">Georgia</option>
-                    </select>
-                    <input title="Change font color" type="color" name="color-fill" id="color-fill" value="" onchange="getColorFill()">
-                    <input title="Change the border of the font color" type="color" name="color-font" id="color-font" value="" onchange="getColorStroke()">
-                    <button title="Change font size" class="minus " onclick="onGetFontSize(-3) "><img src="images/minus.png "></button><button title="Change font size" onclick="onGetFontSize(3) "><img src="images/plus.png "></button>
-                    <button title="Delete line" onclick="onClearLine(id)"><img src="images/trash.png " alt=" "></button>
-                    <button value="right" onclick="onChangeAlign(this.value) "><img src="images/left.png "></button>
-                    <button value="center" onclick="onChangeAlign(this.value) "><img src="images/center.png "></button>
-                    <button value="left" onclick="onChangeAlign(this.value) "><img src="images/right.png "></button>
-                    <button title="Move line up" value="up" onclick="onMoveLine(this.value) "><img src="images/up.png"></button>
-                    <button title="Move line down" value="down" onclick="onMoveLine(this.value) "><img src="images/down.png"></button>
-                    <button title="Add addittional line" onclick="onAddLine()"><img src="images/add.png"></button>
-                    <button title="Move to the second line" id="" onclick="onChangeFocus()"><img src="images/switch.svg "></button>
-                    <button title="Switch between the lines" onclick="onSwitchLinesText() "><img src="images/turn.png"></button>
-                    <button title="Add an emoji" id="emoji-button"><img src="images/Layer.png" alt=""></button>
+                <container class="flex direction-column">
+                    <input type="text" class="line1" value="" placeholder="Please enter your sentence here" id="0" onclick="lineNum(this.id)" oninput="onSetText(value)" data-trans="txt-line">
 
-                    <input type="text " class="line1" value="" placeholder="Please enter your sentence here" id="0" onclick="lineNum(this.id)" oninput="onSetText(value)" data-trans="txt-line">
+                    <div class="buttons-container">
+                        <select class="fonts" id="select_font " onchange="onChangeFont(this.value)">
+                            <option value="Arial ">Arial</option>
+                            <option value="Sans Serif">Sans Serif</option>
+                            <option value="Comic Sans MS ">Comic Sans MS</option>
+                            <option value="Times New Roman ">Times New Roman</option>
+                            <option value="Courier New ">Courier New</option>
+                            <option value="Verdana ">Verdana</option>
+                            <option value="Trebuchet MS ">Trebuchet MS</option>
+                            <option value="Arial Black ">Arial Black</option>
+                            <option value="Impact" selected>Impact</option>
+                            <option value="Bookman">Bookman</option>
+                            <option value="Garamond">Garamond</option>
+                            <option value="Palatino ">Palatino</option>
+                            <option value="Georgia ">Georgia</option>
+                        </select>
+                        <div class="flex">
+                            <label class="color ctrl-btn" for="color-fill"><img class="image" src="images/colorfill.png" alt=""></label>
+                            <input title="Change font color" type="color" name="color-fill" id="color-fill" value="" onchange="getColorFill()" hidden>
+                            <label class="color ctrl-btn" for="color-font"><img class="image" src="images/color-font.png" alt=""></label>
+                            <input title="Change the border of the font color" type="color" name="color-font" id="color-font" value="" onchange="getColorStroke()" hidden>
+                            <button title="Change font size" class="minus ctrl-btn " onclick="onGetFontSize(-3) "><img class="image" src="images/minus.png "></button><button class="ctrl-btn" title="Change font size" onclick="onGetFontSize(3) "><img  src="images/plus.png "></button>
+                            <button title="Add an emoji" class="ctrl-btn" id="emoji-button"><img src="images/Layer.png" alt=""></button>
+                        </div>
+                        <div class="flex">
+                            <button class="ctrl-btn" value="right" onclick="onChangeAlign(this.value) "><img src="images/left.png "></button>
+                            <button class="ctrl-btn" value="center" onclick="onChangeAlign(this.value) "><img  src="images/center.png "></button>
+                            <button class="ctrl-btn" value="left" onclick="onChangeAlign(this.value) "><img src="images/right.png "></button>
+                            <button class="ctrl-btn" title="Add addittional line" class="image" onclick="onAddLine()"><img src="images/add.png"></button>
+                            <button class="ctrl-btn" title="Delete line" onclick="onClearLine(id)"><img class="image" src="images/trash.png " alt=" "></button>
+                        </div>
+                        <div class="flex">
+                            <button class="ctrl-btn" title="Move line up" value="up" onclick="onMoveLine(this.value) "><img class="image" src="images/up.png"></button>
+                            <button class="ctrl-btn" title="Move line down" value="down" onclick="onMoveLine(this.value) "><img class="image" src="images/down.png"></button>
+                            <button class="ctrl-btn" title="Switch between the lines" onclick="onSwitchLinesText() "><img class="image" src="images/turn.png"></button>
+                            <button class="ctrl-btn" title="Move to the second line" id="" onclick="onChangeFocus()"><img class="image" src="images/switch.svg "></button>
+                        </div>
+                        <div class="flex">
+                        </div>
+                        <form class="flex" action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                            <label class="ctrl-btn" for="file"><img src="images/upload.png" alt=""></label>
+                            <input type="file" class="file-input btn ctrl-btn" name="image" id="file" onchange="onImgInput(event)" hidden />
+                            <input name="img" id="imgData" type="hidden" />
+                            <button class="btn ctrl-btn" type="submit"><img src="images/share.png"></button>
+                            <a href="#" class="btn ctrl-btn" onclick="downloadCanvas(this)" download="my-img.jpg"><img src="images/save.png" /></a>
+                            <div class="share-container"></div>
+                        </form>
 
-                    <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" />
-
-                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
-                        <input name="img" id="imgData" type="hidden" />
-                        <button class="btn" type="submit"><img src="images/share.png"></button>
-                        <a class="download" href="#" class="btn" onclick="downloadImg(this)" download="my-img.jpg"><img class="download" src="images/save.png" /></a>
-                        <div class="share-container"></div>
-                    </form>
+                </container>
 
                 </div>
     </div>
@@ -86,7 +98,7 @@
         <input type="text" class="kw" placeholder="Please enter your search keywords here" value="" data-trans="txt-kw" oninput="onFilterByKW(value)" />
 
         <div class="search-btn"></div>
-        <container class="image-list "></container>
+        <container class="image-list"></container>
 
 
     </div>

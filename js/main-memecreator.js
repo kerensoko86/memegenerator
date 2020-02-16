@@ -30,11 +30,11 @@ function onMouseClick(ev) {
 
 function onMouseMove(ev) {
     if (mouseClicked) {
-        draw(ev);
+        dragLine(ev);
     }
 }
 
-function draw(ev) {
+function dragLine(ev) {
     const offsetX = ev.offsetX;
     const offsetY = ev.offsetY;
     var meme = getMeme();
@@ -169,7 +169,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const picker = new EmojiButton();
 
     picker.on('emoji', emoji => {
-        document.querySelector('.line1').value += emoji;
+        setEmoji(emoji);
         drawImg();
     });
 

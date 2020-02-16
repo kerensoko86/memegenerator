@@ -86,6 +86,10 @@ function setText(value) {
     gMeme.lines[gMeme.selectedLineIdx].txt = value;
 }
 
+function setEmoji(emoji) {
+    gMeme.lines[gMeme.selectedLineIdx].txt = gMeme.lines[gMeme.selectedLineIdx].txt + emoji;
+}
+
 function uploadImg(elForm, ev) {
     ev.preventDefault();
     document.getElementById('imgData').value = gCanvas.toDataURL("image/jpeg");
