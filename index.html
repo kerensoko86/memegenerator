@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme Generator</title>
     <link rel="stylesheet" href="style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
 </head>
 
 <body onload="onInit()">
@@ -105,14 +106,15 @@
     </main>
 
     <div class="main-containter ">
-        <input type="text" class="kw" placeholder="Please enter your search keywords here" value="" data-trans="txt-kw" oninput="onFilterByKW(value)" />
+        <input type="text" class="kw" placeholder="Search..." value="" data-trans="txt-kw" oninput="onFilterByKW(value)" />
 
         <div class="search-btn"></div>
         <container class="image-list"></container>
 
 
     </div>
-    <!-- <footer data-trans="footer">BE AWARE! These memes should be used only to make people happy</footer> -->
+    <footer class="footer">This is keren meme genrator </footer>
+</body>
     <script src="js/i18n-service.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/emoji-button@latest/dist/index.min.js"></script>
     <script src="js/util.js "></script>
@@ -122,6 +124,6 @@
     <script src="js/main.js "></script>
 
 
-</body>
+
 
 </html>

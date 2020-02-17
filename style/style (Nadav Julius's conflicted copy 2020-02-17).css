@@ -18,7 +18,7 @@ body.rtl {
 body {
   background-color: #ecf2f4;
   margin: 0;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 #my-canvas {
@@ -34,14 +34,12 @@ body {
   line-height: 80px;
   margin-bottom: 40px;
   width: 100%;
-
 }
 
 .main-nav-container {
   background-color: #25c1f3;
   width: 100%;
   margin-bottom: 40px;
-    box-shadow: 0px 0px 2px 0px #333;
 }
 
 .logo {
@@ -158,8 +156,9 @@ label {
 }
 
 .main-containter {
-  display: block;
+  display: flex;
   margin: 10px;
+  flex-flow: column;
 }
 
 .meme-container {
@@ -205,7 +204,6 @@ footer {
   color: #f8f8f9;
   font-size: 1.2rem;
   font-family: "Ubuntu", sans-serif;
-  box-shadow: inset 0px 0px 2px 0px #333;
 }
 /* helpers */
 
@@ -238,13 +236,13 @@ footer {
 
 .buttonkw {
   background-color: #539eb7;
-  text-transform: uppercase;
+  text-transform:uppercase;
   border-radius: 6px;
   color: black;
-  font-size: 1rem;
+  size: 40px;
   font-family: cursive;
   padding: inherit;
-  margin-bottom: 20px;
+    margin-bottom: 20px;
   margin-right: 10px;
 }
 /**/

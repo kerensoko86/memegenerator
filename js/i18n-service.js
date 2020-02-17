@@ -17,8 +17,8 @@ var gTrans = {
         he: 'שנה שפה'
     },
     'txt-kw': {
-        en: 'Please enter your search keywords here',
-        he: 'אנא הכנס את מילות החיפוש שלך כאן',
+        en: 'Search...',
+        he: 'חיפוש...',
     },
     'txt-line': {
         en: 'Please enter your sentence here',
@@ -49,7 +49,7 @@ function getTrans(transKey) {
     if (!langMap) return 'UNKNOWN';
     // console.log(transKey);
     var txt = langMap[gCurrLang]
-        // If translation not found - use english
+    // If translation not found - use english
     if (!txt) txt = langMap['en'];
     return txt;
 }
